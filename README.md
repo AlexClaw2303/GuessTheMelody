@@ -1,4 +1,4 @@
 # GuessTheMelody
 Required modules to run app:
-sphinx
+sphinx and
 pygame
