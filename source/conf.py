@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'GuessTheMelody'
+project = 'GTM'
 copyright = '2021, Alexander AlexClaw2303 Zamoshnikov'
 author = 'Alexander AlexClaw2303 Zamoshnikov'
 
