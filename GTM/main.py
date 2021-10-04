@@ -4,30 +4,32 @@ import random
 import time
 import sphinx
 
-mixer.init()
-songsList = [["Barbariki.mp3", "Moscow.mp3", "Wave.mp3"],
-             ["Барбарики", "Москва", "Волна"]]
+class GameLogic():
+    mixer.init()
+    songsList = [["Barbariki.mp3", "Moscow.mp3", "Wave.mp3"],
+                ["Барбарики", "Москва", "Волна"]]
 
 
-def EnterNamePlayerOne():
-    global firstName
-    firstName = playerOneName.get()
-    print(firstName)
+    def EnterNamePlayerOne(self):
+        global firstName
+        firstName = playerOneName.get()
+        print(firstName)
 
-def EnterNamePlayerTwo():
-    global secondName
-    secondName = playerTwoName.get()
-    print(secondName)
+    def EnterNamePlayerTwo(self):
+        global secondName
+        secondName = playerTwoName.get()
+        print(secondName)
 
-def EnterNamePlayerThree():
-    global thirdName
-    thirdName = playerThreeName.get()
-    print(thirdName)
+    def EnterNamePlayerThree(self):
+        global thirdName
+        thirdName = playerThreeName.get()
+        print(thirdName)
 
-def EnterRounds():
-    global rounds
-    rounds = RoundsEntry.get()
-    print(rounds)
+    def EnterRounds(self):
+        global rounds
+        rounds = RoundsEntry.get()
+        print(rounds)
+
 class Start():
     def start(self):
         global playerOneName, playerTwoName, playerThreeName, firstName, secondName, thirdName, RoundsEntry
@@ -39,21 +41,21 @@ class Start():
         player_oneLabel.grid(column=0, row=0)
         playerOneName = Entry(startingWindow, width=20)
         playerOneName.grid(column=0, row=1)
-        AcceptPlayerOneName = Button(startingWindow, text="Принять", command=EnterNamePlayerOne)
+        AcceptPlayerOneName = Button(startingWindow, text="Принять", command=GameLogic.EnterNamePlayerOne)
         AcceptPlayerOneName.grid(column=1, row=1)
 
         player_twoLabel = Label(startingWindow, text="Игрок 2", font=("Arial", 12))
         player_twoLabel.grid(column=0, row=2)
         playerTwoName = Entry(startingWindow, width=20)
         playerTwoName.grid(column=0, row=3)
-        AcceptPlayerTwoName = Button(startingWindow, text="Принять", command=EnterNamePlayerTwo)
+        AcceptPlayerTwoName = Button(startingWindow, text="Принять", command=GameLogic.EnterNamePlayerTwo)
         AcceptPlayerTwoName.grid(column=1, row=3)
 
         player_threeLabel = Label(startingWindow, text="Игрок 3", font=("Arial", 12))
         player_threeLabel.grid(column=0, row=4)
         playerThreeName = Entry(startingWindow, width=20)
         playerThreeName.grid(column=0, row=5)
-        AcceptPlayerThreeName = Button(startingWindow, text="Принять", command=EnterNamePlayerThree)
+        AcceptPlayerThreeName = Button(startingWindow, text="Принять", command=GameLogic.EnterNamePlayerThree)
         AcceptPlayerThreeName.grid(column=1, row=5)
 
         RoundsLabel = Label(startingWindow, text="Введите количество раундов", font=("Arial", 10))
@@ -61,7 +63,7 @@ class Start():
         RoundsEntry = Entry(startingWindow, width=20)
         RoundsEntry.grid(column=0, row=7)
 
-        AcceptRounds = Button(startingWindow, text="Принять", command=EnterRounds)
+        AcceptRounds = Button(startingWindow, text="Принять", command=GameLogic.EnterRounds)
         AcceptRounds.grid(column=1, row=7)
 
         playButton = Button(startingWindow, text="Начать игру", command=Game.game)
@@ -82,7 +84,7 @@ class Game():
         def playMusic():
             global x
             x = random.randint(0, 2)
-            mixer.music.load(songsList[0][x])
+            mixer.music.load(GameLogic.songsList[0][x])
             mixer.music.play()
 
         def pauseMusic():
@@ -112,7 +114,7 @@ class Game():
         def sendAnswer():
             global score_one, score_two, score_three, x, Success, Fail
             playerAnswer = Answer.get()
-            rightAnswer = songsList[1][x]
+            rightAnswer = GameLogic.songsList[1][x]
             if playerAnswer == rightAnswer:
                 Success = Label(window, text="Верно!", font=('Arial', 14))
                 Success.grid(column=3, row=5)
@@ -178,6 +180,7 @@ class Game():
         DeleteResultFailButton.grid(column=0, row=7)
         window.mainloop()
 
+GameLogic = GameLogic()
 Start = Start()
 Game = Game()
 Start.start()
