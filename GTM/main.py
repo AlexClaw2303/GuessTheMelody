@@ -14,21 +14,28 @@ class GameLogic():
         global firstName
         firstName = playerOneName.get()
         print(firstName)
+        return firstName
 
     def EnterNamePlayerTwo(self):
         global secondName
         secondName = playerTwoName.get()
         print(secondName)
+        return secondName
 
     def EnterNamePlayerThree(self):
         global thirdName
         thirdName = playerThreeName.get()
         print(thirdName)
+        return thirdName
 
     def EnterRounds(self):
         global rounds
         rounds = RoundsEntry.get()
         print(rounds)
+        return rounds
+
+    def GameStarted(self):
+        return "Game Started!"
 
 class Start():
     def start(self):
@@ -94,22 +101,27 @@ class Game():
             global score_one
             score_one += 1
             scoreOne['text'] = str(score_one)
+            return score_one
 
         def addPointToPlayerTwoScore():
             global score_two
             score_two += 1
             scoreTwo['text'] = str(score_two)
+            return score_two
 
         def addPointToPlayerThreeScore():
             global score_three
             score_three += 1
             scoreThree['text'] = str(score_three)
+            return score_three
 
         def DeleteSuccessResult():
             Success.destroy()
+            return "Label Destroyed"
 
         def DeleteFailResult():
             Fail.destroy()
+            return "Label Destroyed"
 
         def sendAnswer():
             global score_one, score_two, score_three, x, Success, Fail
@@ -184,3 +196,4 @@ GameLogic = GameLogic()
 Start = Start()
 Game = Game()
 Start.start()
+GameLogic.GameStarted()
